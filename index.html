@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <script src="./js/jquery.js"></script>
+    <title>LeeSoomin's Portfolio</title>
+    <style>
+        @font-face {
+            font-family: 'Korean';
+            src: url(./fonts/NotoSansKR.ttf);
+        }
+        :root{
+            /* summer */
+            --color01:#54D8FF;
+            --color02:#46b5d6;
+            --color03:#2f7a91;
+            --color04:#13313a;
+            --point01:#FFA036;
+            --point02:#FCDE6A;
+            --text01:#fff;
+            --text02:#ccc;
+            --text03:#999;
+            --text04:#666;
+            --text05:#333;
+            --text06:#000;
+
+            font-family: 'Korean';
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 1.5;
+            color: var(--text01);
+            scroll-behavior:smooth;
+        }
+        .wrap{
+            overflow: hidden;
+        }
+        /* header style */
+
+        /* header home에선 배경색없이 나타나도록, 슬라이드가 움직인 후부터 배경색 나타나도록 
+       */ 
+       .header{
+            position: fixed;
+            width: 100%;
+            height: 3em;
+            background: var(--text01);
+            color: var(--text04);
+            opacity: 0.7;
+            z-index: 100;
+        }
+        .header .container{
+            display: grid;
+            grid-template-columns: repeat(2,auto);
+            color: var(--text05);
+        }
+        .header h1{
+            font-size: 2em;
+            padding-left: 1em;
+        }
+        .header #main-nav ul{
+            display: grid;
+            grid-template-columns: repeat(6,1fr);
+            font-size: 1.3em;
+            text-transform: uppercase;
+            transform: translateY(0.4em);
+        }
+        /* section 공통 style */
+        .sec .container{
+            height: 100vh;
+            padding: 3% 3%; 
+        }
+        .sec .tit{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+        }
+        .sec .tit::after{
+            content: '';
+            display: block;
+        }
+        .sec .location{
+            grid-column: 1/2;
+            font-size: 0.8em;
+            text-transform: capitalize;
+        }
+        .sec h2{
+            grid-column: 2/4;
+            padding-bottom: 10%;
+            font-size: 4em;
+            font-weight: 700;
+            text-transform: capitalize;
+            text-align: center;
+        }
+        /* home style */
+        #home .container{
+            background: url(./images/polynesia-3021072_640.jpg) no-repeat center;
+            background-size: cover;
+            text-align: center;
+        }
+        #home p{
+            grid-column: 2/4;
+        }
+
+        /* about style */
+        #about{
+            background: var(--color01);
+        }
+        #about .about-me{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap:3em;
+        }
+        #about .about-me li{
+            padding-bottom: 2em;
+        }
+        #about .about-me h3{
+            font-size: 2em;
+            padding-bottom: 0.25em;
+        }
+        #about .about-me p{
+            font-size: 1.3em;
+        }
+
+        /* skills style */
+        #skills{
+            background: var(--color02);
+        }
+        #skills .sk-half{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            column-gap: 3em;
+        }
+        #skills ul li{
+            padding-bottom: 3%;
+        }
+        #skills ul li h3{
+            font-size: 2em;
+            padding-bottom: 1%;
+        }
+        #skills ul li p{
+            padding-bottom: 1%;
+        }
+        #skills .list01{
+            grid-column: 1/2;
+        }
+        #skills .list02{
+            grid-column: 2/-1;
+        }
+        #skills .bar{
+            position: relative;
+            width: 100%;
+            height: 20px;
+            background: var(--text03);
+        }
+        #skills .bar::after{
+            content: '';
+            display: block;
+            width: 70%;
+            height: 20px;
+            background: var(--point01);
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1;    
+        }
+        #skills li:nth-child(2) .bar::after,
+        #skills li:nth-child(7) .bar::after{
+            width: 80%;
+        }
+        #skills li:nth-child(4) .bar::after, 
+        #skills li:nth-child(5) .bar::after,
+        #skills li:nth-child(8) .bar::after{
+            width: 75%;
+        }
+        #skills li:nth-child(9) .bar::after,
+        #skills li:nth-child(10) .bar::after{
+            width: 90%;
+        }
+        #skills .bar span{
+            position: absolute;
+            left: 50%;
+            right: 50%;
+            transform: translateX(-50%,-50%);
+            z-index: 3;
+        }
+        #skills ul li p .dis-non{
+            display: none;
+        }
+
+        /* project style */
+        #project{
+            background: var(--color03);
+        }
+        #project .container{
+            height: auto;
+        }
+        #project .project-nav{
+            display: flex;
+            justify-content: space-evenly;
+            position: relative;
+        }
+        #project .project-nav h3{
+            font-size: 2em;
+        }
+        #project .project-nav .sub{
+            display: flex;
+            justify-content: space-between;
+            padding-top: 2%;
+        }
+        #project .project-nav .sub-nav01{
+            /* display: none; */
+            position: absolute;
+            left: 10%;
+            right:50%;
+        }
+        #project .project-nav .sub-nav02{
+            position: absolute;
+            left: 50%;
+            right: 10%;
+        }
+        #project .project-nav .sub li{
+            font-size: 1.3em;
+        }
+        .project-design,
+        .project-publish{
+            /* display: grid;
+            grid-template-columns: repeat(2,1fr);
+            column-gap: 2em;   */
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            justify-content: space-evenly;
+        }
+        .project-design li,
+        .project-publish li{
+            /* display: none; */
+            padding-top: 1em;
+        }
+        .project-publish li{
+            display: none;
+        }
+        .project-design li:nth-child(1),
+        .project-design li:nth-child(2),
+        .project-publish li:nth-child(1),
+        .project-publish li:nth-child(2){
+            padding-top: 13%;
+        }
+        
+        
+        /* contact style */
+        #contact{
+            background: var(--color04);
+            text-transform: capitalize;
+        }
+        #contact ul{
+            display: flex;
+            justify-content: space-evenly;
+            font-size: 2.5em;
+            text-align: center;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- <div class="intro">intro</div> -->
+    <section class="wrap">
+        <header class="header">
+            <div class="container">
+                <h1><a href="#home">SOOMIN's Portfolio</a></h1>
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="#home">home</a></li>
+                        <li><a href="#about">about</a></li>
+                        <li><a href="#skills">skills</a></li>
+                        <li><a href="#project">project</a></li>
+                        <li><a href="#contact">contact</a></li>
+                    </ul>
+                </nav>
+            </div>   
+        </header>
+        <main>
+            <section class="sec" id="home">
+                <div class="container">
+                    <h2>SOOMIN's Portfolio</h2>
+                    <p>
+                        밝게 웃으며, 성실히 노력하는 웹디자이너이자 퍼블리셔 
+                    </p>
+                </div>
+            </section>
+            <section class="sec" id="about">
+                <div class="container">
+                    <div class="tit">
+                        <div class="location">home > about</div>
+                        <h2 class="txt">about</h2>
+                    </div>
+                    <div class="about-me">
+                        <div class="img-box"><img src="./images/ai-generated-8656513_1280.jpg" alt="soomin"></div>
+                        <ul>
+                            <li>
+                                <h3>생년월일</h3>
+                                <p>1995년 05월 06일</p>
+                            </li>
+                            <li>
+                                <h3>학력</h3>
+                                <p>강동고등학교 졸업</p>
+                                <p>신구대학교 유아교육과 졸업</p>
+                            </li>
+                            <li>
+                                <h3>자격증</h3>
+                                <p>유치원 정교사 2급</p>
+                                <p>보육교사 2급</p>
+                                <p>아동미술지도사 2급</p>
+                                <p>운전면허 2종보통</p>
+                            </li>
+                            <li>
+                                <h3>훈련수료</h3>
+                                <p>(디지털 디자인)UI/UX 프론트엔드 반응형 웹디자인,<br>웹퍼블리셔 개발자 과정A</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="sec" id="skills">
+                <div class="container">
+                    <div class="tit">
+                        <div class="location">home > skills</div>
+                        <h2 class="txt">skills</h2>
+                    </div>
+                    <ul class="sk-half">
+                        <div class="list01">
+                            <li>
+                                <h3>HTML</h3>
+                                <p>                                
+                                    웹접근성에 기반하여 모든 사용자들이 편하게 사용할 수 있는 HTML5 문서를 제작할 수 있습니다.                            
+                                </p>
+                                <p class="bar">
+                                    <span class="dis-non">성취율 :</span><span>70%</span>
+                                </p>
+                            </li>
+                            <li>
+                                <h3>CSS</h3>
+                                <p>                                
+                                    최신 트랜드를 반영하고 다양한 애니메이션을 구성할 수 있으며, javaScript와 연동할 수 있는 스타일시트를 제작할 수 있습니다.                            
+                                </p>
+                                <p class="bar">
+                                    <span class="dis-non">성취율 :</span><span>80%</span>
+                                </p>
+                            </li>
+                            <li>
+                                <h3>javaScript</h3>
+                                <p>                                
+                                    트랜드를 반영한 슬라이더, 스크롤, 애니메이션등의 이벤트를 자바스트립트로 제작할 수 있습니다.
+                                </p>
+                                <p class="bar">
+                                    <span class="dis-non">성취율 :</span><span>70%</span>
+                                </p>
+                            </li>
+                            <li>
+                                <h3>jQuery</h3>
+                                <p>                                
+                                    트랜드를 반영한 슬라이더, 스크롤, 애니메이션등의 이벤트를 제이쿼리로 제작할 수 있습니다.
+                                </p>
+                                <p class="bar">
+                                    <span class="dis-non">성취율 :</span><span>75%</span>
+                                </p>
+                            </li>
+                            <li>
+                                <h3>Photoshop</h3>
+                                <p>                                
+                                    사진 보정, 합성, 상세 페이지, SNS 디자인 등 다양한 실무 디자인을 창의적으로 제작할 수 있습니다.                            
+                                </p>
+                                <p class="bar">
+                                    <span class="dis-non">성취율 :</span><span>75%</span>
+                                </p>
+                            </li>
+                        </div>
+                        <div class="list02">
+                            
+                            <li>
+                                <h3>Illustrator</h3>
+                                <p>                                
+                                    드로잉을 통한 간단한 캐릭터 디자인, 로고 디자인, 아이콘 디자인 등을 깔끔하고 돋보이게 제작할 수 있습니다.
+                                </p>
+                                <p class="bar">
+                                    <span class="dis-non">성취율 :</span><span>70%</span>
+                                </p>
+                            </li>
+                            <li>
+                                <h3>Bootstrap</h3>
+                                <p>                                
+                                    프레임워크를 활용하여 표준화되어있는 반응형 웹페이지를 짧은시간에 제작할 수 있습니다.
+                                </p>
+                                <p class="bar">
+                                    <span class="dis-non">성취율 :</span><span>80%</span>
+                                </p>
+                            </li>
+                            <li>
+                                <h3>Git, Github</h3>
+                                <p>                                
+                                    Github를 활용하여 버전관리와 협업프로젝트를 진행할 수 있습니다.                            
+                                </p>
+                                <p class="bar">
+                                    <span class="dis-non">성취율 :</span><span>75%</span>
+                                </p>
+                            </li>
+                            <li>
+                                <h3>VSC</h3>
+                                <p>                                
+                                    Visual Studio Code를 활용하여, 시안디자인을 보고, 웹퍼블리싱을 할 수 있습니다.
+                                </p>
+                                <p class="bar">
+                                    <span class="dis-non">성취율 :</span><span>90%</span>
+                                </p>
+                            </li>
+                            <li>
+                                <h3>Kakao Oven</h3>
+                                <p>                                
+                                    와이어프레임과 프로토타입을 온라인툴을 활용하여 제작할 수 있습니다.                            
+                                </p>
+                                <p class="bar">
+                                    <span class="dis-non">성취율 :</span><span>90%</span>
+                                </p>
+                            </li>
+                        </div>
+                       
+                    </ul>
+                </div>
+            </section>
+            <section class="sec" id="project">
+                <div class="container">
+                    <div class="tit">
+                        <div class="location">home > project</div>
+                        <h2 class="txt">project</h2>
+                    </div>
+                    <ul class="project-nav">
+                        <li>
+                            <h3 id="de">디자인</h3>
+                            <ul class="sub sub-nav01">
+                               <li>
+                                    상세페이지
+                               </li>
+                               <li>
+                                    배너
+                               </li>
+                               <li>
+                                    웹
+                               </li>
+                            </ul>
+                        </li>
+                        <li>
+                           <h3 id="pu">퍼블리싱</h3> 
+                            <ul class="sub sub-nav02">
+                                <li>
+                                    고정형
+                                </li>
+                                <li>
+                                    반응형
+                                </li>
+                            </ul>
+                        </li> 
+                    </ul>
+                    <ul class="project-design">
+                        <li class="detail detail01">
+                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지01"></div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        </li>
+                        <li class="detail detail02">
+                            <div class="img-box"><img src="./images/woman-1509956_640.jpg" alt="상세페이지02"></div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        </li>
+                        <li class="detail detail03">
+                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지03"></div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        </li>
+                        <li class="web web01">
+                            <div class="img-box"><img src="./images/woman-1509956_640.jpg" alt="웹디자인01"></div>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                        </li>
+                        <li class="web web02">
+                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="웹디자인02"></div>
+                            <p>Lorem ipsum dolor sit.</p>
+                        </li>
+                        <li class="web web03">
+                            <div class="img-box"><img src="./images/woman-1509956_640.jpg" alt="웹디자인03"></div>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum!</p>
+                        </li>
+                        <li class="banner banner01">
+                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="배너디자인01"></div>
+                            <p>Lorem ipsum dolor sit amet consectetur.</p>
+                        </li>
+                        <li class="banner banner02">
+                            <div class="img-box"><img src="./images/woman-1509956_640.jpg" alt="배너디자인02"></div>
+                            <p>Lorem ipsum dolor sit amet consectetur.</p>
+                        </li>
+                        <li class="banner banner03">
+                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="배너디자인03"></div>
+                            <p>Lorem ipsum dolor sit amet consectetur.</p>
+                        </li>
+                    </ul>
+                    <ul class="project-publish">
+                        <li class="detail detail01">
+                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지01"></div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        </li>
+                        <li class="detail detail02">
+                            <div class="img-box"><img src="./images/woman-1509956_640.jpg" alt="상세페이지02"></div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        </li>
+                        <li class="detail detail03">
+                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지03"></div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        </li>
+                        <li class="web web01">
+                            <div class="img-box"><img src="./images/woman-1509956_640.jpg" alt="웹디자인01"></div>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                        </li>
+                        <li class="web web02">
+                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="웹디자인02"></div>
+                            <p>Lorem ipsum dolor sit.</p>
+                        </li>
+                        <li class="web web03">
+                            <div class="img-box"><img src="./images/woman-1509956_640.jpg" alt="웹디자인03"></div>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum!</p>
+                        </li>
+                        <li class="banner banner01">
+                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="배너디자인01"></div>
+                            <p>Lorem ipsum dolor sit amet consectetur.</p>
+                        </li>
+                        <li class="banner banner02">
+                            <div class="img-box"><img src="./images/woman-1509956_640.jpg" alt="배너디자인02"></div>
+                            <p>Lorem ipsum dolor sit amet consectetur.</p>
+                        </li>
+                        <li class="banner banner03">
+                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="배너디자인03"></div>
+                            <p>Lorem ipsum dolor sit amet consectetur.</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="sec" id="contact">
+                <div class="container">
+                    <div class="tit">
+                        <div class="location">home > contact</div>
+                        <h2 class="txt">contact</h2>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <div class="img-box"><img src="./images/ico-talk.svg" alt="Kakaotalk"></div>
+                                <h3>Kakaotalk</h3>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="img-box"><img src="./images/ico-mail.svg" alt="Kakaotalk"></div>
+                                <h3>E-mail</h3>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="img-box"><img src="./images/ico-github.svg" alt="Kakaotalk"></div>
+                                <h3>github</h3>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="img-box"><img src="./images/ico-instagram.svg" alt="instagram"></div>
+                                <h3>instagram</h3>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            Copyrights by SOOMIN LEE
+        </footer>
+    </section>    
+    <script>
+        let proDe = $('.project-nav .de');
+        let proPu = $('.project-nav pu');
+        let suB01 = $('.project-nav .sub-nav01') 
+        
+    </script>
+</body>
+</html>
