@@ -4,7 +4,7 @@ portfolio 주소로 쓸 것.
 
 # MIN 포트폴리오
 ## Design and Publish by MIN 
-[포트폴리오바로가기](MIN3056.github.io)
+[포트폴리오바로가기](https://min3056.github.io/)
 
 # PROJECT
 ## 1. HOLLYS
