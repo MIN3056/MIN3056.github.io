@@ -63,6 +63,13 @@
             justify-content: space-between;
             align-items: center;
         } 
+        .header.active{
+            position: fixed;
+            background: var(--text01);
+            color: var(--color00);
+        }
+
+            /* main-nav */
         .header .container #main-nav{
             transition:0.3s;
         }
@@ -75,12 +82,11 @@
             font-size: 1.5em;
             text-transform: uppercase;
         }
-
-        /* hover */
         .header #main-nav li:hover{
             color: var(--point01);
         }
 
+            /* btn-nav */
         .header .container .btn-nav{
             display: none;            
             align-content: space-between;
@@ -93,29 +99,21 @@
             border-radius: 1.5px;
             background: var(--text01);
         }
-        .header h1{
-            font-size: 2em;
-            padding-left: 1em;
-        }
-        /* active */
-        .header.active{
-            position: fixed;
-            background: var(--text01);
-            color: var(--color00);
-        }
         .header.active .btn-nav span{
             background: var(--color00);
         }
         .header .btn-nav:hover span{
             background: var(--point01);
         }
-        
-        .header .btn-nav:hover span{
-            background: var(--point01);
+
+        .header h1{
+            font-size: 2em;
+            padding-left: 1em;
         }
+         
         
 
-        @media (max-width: 960px){
+        @media (max-width: 980px){
             .header .container #main-nav{
                 display:none;
                 padding:20px;
@@ -124,7 +122,7 @@
                 right: 0;
                 top:100%;
                 background: var(--text01);
-                color: var(--text04);
+                color: var(--color00);
                 font-size: 13px;
                 text-align: center;
             }
@@ -138,7 +136,29 @@
                     
         }
     
-       
+       /* aside to-top style */
+       .to-top{
+        position: fixed;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: var(--point01);
+        color: var(--text01);
+        right: 50px;
+        bottom: 100px;
+        z-index: 1000;
+        }
+        .to-top p{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 23px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 1.5em;
+        }
         /* section 공통 style */
         .sec .container{
             height: auto;
@@ -175,6 +195,7 @@
         }
         #home p{
             grid-column: 2/4;
+            font-size: 1.5em;
         }
 
         /* about style */
@@ -201,27 +222,17 @@
         #skills{
             background: var(--color02);
         }
-       
         #skills .sk-half{
             display: grid;
             grid-template-columns: repeat(2,1fr);
-            column-gap: 3em;
-        }
-        #skills ul li{
-            padding-bottom: 3%;
+            gap: 1em;
         }
         #skills ul li h3{
-            font-size: 2em;
-            padding-bottom: 1%;
+            font-size: 1.5em;
+            font-weight: 600;
         }
-        #skills ul li p{
-            padding-bottom: 1%;
-        }
-        #skills .list01{
-            grid-column: 1/2;
-        }
-        #skills .list02{
-            grid-column: 2/-1;
+        #skills ul li .pos{
+            margin-bottom: 0.5em;
         }
         #skills .bar{
             position: relative;
@@ -229,30 +240,61 @@
             height: 20px;
             background: var(--text03);
         }
-        #skills .bar::after{
+        #skills.active .bar::after{
             content: '';
             display: block;
-            width: 70%;
             height: 20px;
             background: var(--point01);
             position: absolute;
             left: 0;
             top: 0;
             z-index: 1;    
+            animation: pbar70 2s forwards;
         }
-        #skills li:nth-child(2) .bar::after,
-        #skills li:nth-child(7) .bar::after{
-            width: 80%;
+        #skills.active li:nth-child(2) .bar::after,
+        #skills.active li:nth-child(7) .bar::after{
+            animation: pbar80 2s forwards;
         }
-        #skills li:nth-child(4) .bar::after, 
-        #skills li:nth-child(5) .bar::after,
-        #skills li:nth-child(8) .bar::after{
-            width: 75%;
+        #skills.active li:nth-child(10) .bar::after, 
+        #skills.active li:nth-child(5) .bar::after,
+        #skills.active li:nth-child(8) .bar::after{
+            animation: pbar75 2s forwards;
         }
-        #skills li:nth-child(9) .bar::after,
-        #skills li:nth-child(10) .bar::after{
-            width: 90%;
+        #skills.active li:nth-child(9) .bar::after,
+        #skills.active li:nth-child(4) .bar::after{
+            animation: pbar90 2s forwards;
         }
+
+       /* #skills.active .bar::after{
+        animation: pbar70 3s 0s linear forwards;
+        }*/
+         #skills.active li:nth-child(2) .bar::after{
+            animation-delay:0.5s;
+        }
+        #skills.active li:nth-child(3) .bar::after{
+            animation-delay:1s;
+        }
+        #skills.active li:nth-child(4) .bar::after{
+            animation-delay:1.5s;
+        }
+        #skills.active li:nth-child(5) .bar::after{
+            animation-delay:2s;
+        } 
+        #skills.active li:nth-child(6) .bar::after{
+            animation-delay:2.5s;
+        } 
+        #skills.active li:nth-child(7) .bar::after{
+            animation-delay:3s;
+        } 
+        #skills.active li:nth-child(8) .bar::after{
+            animation-delay:3.5s;
+        } 
+        #skills.active li:nth-child(9) .bar::after{
+            animation-delay:4s;
+        } 
+        #skills.active li:nth-child(10) .bar::after{
+            animation-delay:4.5s;
+        } 
         #skills .bar span{
             position: absolute;
             left: 50%;
@@ -260,9 +302,44 @@
             transform: translateX(-50%,-50%);
             z-index: 3;
         }
+        /* animation */
+        @keyframes pbar70{
+            0%{
+                width: 0;
+            }
+            100%{
+                width: 70%;
+            }
+        }
+        @keyframes pbar75{
+            0%{
+                width: 0;
+            }
+            100%{
+                width: 75%;
+            }
+        }
+        @keyframes pbar80{
+            0%{
+                width: 0;
+            }
+            100%{
+                width: 80%;
+            }
+        }
+        @keyframes pbar90{
+            0%{
+                width: 0;
+            }
+            100%{
+                width: 90%;
+            }
+        }
         #skills ul li p .dis-non{
             display: none;
         }
+        
+
         @media(max-width:1132px){
             #skills .list01 {
                 grid-area: 1 / 1 / 2 / -1;
@@ -277,60 +354,67 @@
         #project{
             background: var(--color03);
         }
-        
+        #project .container{
+            padding-bottom: 0;
+        }
         #project .project-nav{
             display: flex;
             justify-content: space-evenly;
+            font-size: 2em;
+            font-weight: 500;
+            cursor: pointer;        
+            padding-bottom: 1em;
+        }
+        /* hover */
+        #project .project-nav li:hover p{
+            color: var(--point01);
+        }
+        .project-nav li.active{
+            color:var(--point01)
+        }
+        #project .project-list{
+            max-width: 100%;
+            display: flex;
+            flex-flow: row wrap;
+            padding-bottom: 100px;
             position: relative;
         }
-        #project .project-nav h3{
-            font-size: 2em;
-            cursor: pointer;
+        #project .project-list li{
+            width: 33.333333%;
         }
-        #project .project-nav .sub{
-            display: flex;
-            justify-content: space-between;
+        @media(max-width:768px){
+            #project .project-list li{
+                width: 50%;
+            }
+            #project .project-nav{
+                font-size: 1.5em;
+            }
         }
-        #project .project-nav .sub-nav01{
-            /* display: none; */
-            position: absolute;
-            left: 5%;
-            right:50%;
+        @media(max-width:600px){
+            #project .project-nav{
+                font-size: 1em;
+            }
         }
-        #project .project-nav .sub-nav02{
-            position: absolute;
-            left: 50%;
-            right: 5%;
+        @media(max-width:500px){
+            #project .project-list li{
+                width: 100%;
+            }
         }
-        #project .project-nav .sub li{
+        #project .project-list li .txt-box{
+            display: none;
+            background: red;
+        }
+        /* hover */
+        #project .project-list li:hover .txt-box{
+            display: block;
+        }
+
+        #project .project-list li .txt-box h5{
+            font-weight: 600;
             font-size: 1.3em;
         }
-        .project-design,
-        .project-publish{
-            /* display: grid;
-            grid-template-columns: repeat(2,1fr);
-            column-gap: 2em;   */
-            display: grid;
-            grid-template-columns: repeat(2, auto);
-            justify-content: space-evenly;
-            column-gap: 2em;
-        }
-        .project-design li,
-        .project-publish li{
-            /* display: none; */
-            padding-top: 1em;
-        }
-        .project-publish li{
-            display: none;
-        }
-        .project-design li:nth-child(1),
-        .project-design li:nth-child(2),
-        .project-publish li:nth-child(1),
-        .project-publish li:nth-child(2){
-            padding-top: 13%;
-        }
-        
-        
+
+
         /* contact style */
         #contact{
             background: var(--color04);
@@ -342,13 +426,13 @@
         }
         #contact ul{
             display: flex;
-            flex-flow: row wrap;
+            flex-flow: row nowrap;
             justify-content: center;
             align-items: center;
         }
         #contact li{
             width: 25%;
-            padding: 1em;
+            margin: 1em;
         }
         #contact li h3{
             font-size: 2em;
@@ -374,20 +458,7 @@
                 font-size: 1em;
             }
         }
-        @media(max-width:900px){
-            .project-design,
-            .project-publish{
-                grid-template-columns: 1fr;
-            }
-            .project-design li:nth-child(1), 
-            .project-publish li:nth-child(1){
-                padding-top:8%;
-            }
-            .project-design li:nth-child(2), 
-            .project-publish li:nth-child(2){
-                padding-top: 1em;
-            }
-        }
+    
         @media(max-width:780px){
             .header{
                 padding-left: 1em;
@@ -407,18 +478,6 @@
             #about .about-me{
                 grid-template-columns: 1fr;
             }
-            #project .project-nav .sub-nav01 {
-                left: 3%;
-            }
-            #project .project-nav .sub-nav02{
-                right: 3%;
-            }
-            #project .project-nav h3{
-                font-size: 1.5em;
-            }
-            #project .project-nav .sub li {
-                font-size: 1em;
-            }
             #contact li{
                width:100%
             }  
@@ -426,8 +485,6 @@
                 width: 100px;
                 height: 100px;
             }
-            
-            
         }
         @media(max-width:720px){
             #contact ul{
@@ -450,12 +507,7 @@
             #skills ul li h3{
                 font-size: 1.8em;
             }
-            #project .project-nav h3{
-                font-size: 1.3em;
-            }
-            #project .project-nav .sub li{
-                font-size: 0.9em;
-            }
+
         }
         @media(max-width:450px){
             .header h1{
@@ -473,16 +525,8 @@
                 font-size: 13px;
             }
         }
-        @media(max-width:400px){
-            #project .project-nav .sub-nav01 {
-                left: 3%;
-            }
-            #project .project-nav .sub-nav02{
-                right: 3%;
-            }
-        }
         
-        
+
         /* footer style */
         .footer{
             font-style: italic;
@@ -511,6 +555,9 @@
                 <div class="btn-nav"><span></span><span></span><span></span></div>
             </div>   
         </header>
+        <aside class="to-top">
+            <a href="#home"><p>TOP</p></a>
+        </aside>
         <main>
             <section class="sec section sec01" id="home">
                 <div class="container">
@@ -560,7 +607,6 @@
                         <h2 class="txt">skills</h2>
                     </div>
                     <ul class="sk-half">
-                        <div class="list01">
                             <li>
                                 <h3>HTML</h3>
                                 <p class="pos">                                
@@ -589,12 +635,12 @@
                                 </p>
                             </li>
                             <li>
-                                <h3>Git, Github</h3>
+                                <h3>VSC</h3>
                                 <p class="pos">                                
-                                    Github를 활용하여 버전관리와 협업프로젝트를 진행할 수 있습니다.                            
+                                    Visual Studio Code를 활용하여, 시안디자인을 보고, 웹퍼블리싱을 할 수 있습니다.
                                 </p>
                                 <p class="bar">
-                                    <span class="dis-non">성취율 :</span><span id="move">75%</span>
+                                    <span class="dis-non">성취율 :</span><span id="move">90%</span>
                                 </p>
                             </li>
                             <li>
@@ -606,9 +652,6 @@
                                     <span class="dis-non">성취율 :</span><span id="move">75%</span>
                                 </p>
                             </li>
-                        </div>
-                        <div class="list02">
-                            
                             <li>
                                 <h3>Illustrator</h3>
                                 <p class="pos">                                
@@ -646,17 +689,14 @@
                                 </p>
                             </li>
                             <li>
-                                <h3>VSC</h3>
+                                <h3>Git, Github</h3>
                                 <p class="pos">                                
-                                    Visual Studio Code를 활용하여, 시안디자인을 보고, 웹퍼블리싱을 할 수 있습니다.
+                                    Github를 활용하여 버전관리와 협업프로젝트를 진행할 수 있습니다.                            
                                 </p>
                                 <p class="bar">
-                                    <span class="dis-non">성취율 :</span><span id="move">90%</span>
+                                    <span class="dis-non">성취율 :</span><span id="move">75%</span>
                                 </p>
                             </li>
-                            
-                        </div>
-                       
                     </ul>
                 </div>
             </section>
@@ -667,109 +707,124 @@
                         <h2 class="txt">project</h2>
                     </div>
                     <ul class="project-nav">
-                        <li>
-                            <h3 id="de">디자인</h3>
-                            <ul class="sub sub-nav01">
-                               <li>
-                                    상세페이지
-                               </li>
-                               <li>
-                                    배너
-                               </li>
-                               <li>
-                                    웹
-                               </li>
-                            </ul>
+                        <li class="01">
+                            <p>All</p>
+                        </li> 
+                        <li class="02">
+                            <p>배너 및 상세페이지</p>
                         </li>
-                        <li>
-                           <h3 id="pu">퍼블리싱</h3> 
-                            <ul class="sub sub-nav02">
-                                <li>
-                                    고정형
-                                </li>
-                                <li>
-                                    반응형
-                                </li>
-                            </ul>
+                        <li class="03">
+                            <p>웹디자인</p>
+                        </li>
+                        <li class="04">
+                            <p>퍼블리싱</p>
                         </li> 
                     </ul>
-                    <ul class="project-design">
-                        <li class="detail detail01">
-                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지01"></div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        </li>
-                        <li class="detail detail02">
-                            <div class="img-box"><img src="./images/woman-1509956_640.jpg" alt="상세페이지02"></div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        </li>
-                        <li class="detail detail03">
-                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지03"></div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        </li>
-                        <li class="web web01">
-                            <div class="img-box"><img src="./images/woman-1509956_640.jpg" alt="웹디자인01"></div>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
-                        </li>
-                        <li class="web web02">
-                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="웹디자인02"></div>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </li>
-                        <li class="web web03">
-                            <div class="img-box"><img src="./images/woman-1509956_640.jpg" alt="웹디자인03"></div>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum!</p>
-                        </li>
-                        <li class="banner banner01">
-                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="배너디자인01"></div>
-                            <p>Lorem ipsum dolor sit amet consectetur.</p>
-                        </li>
-                        <li class="banner banner02">
-                            <div class="img-box"><img src="./images/woman-1509956_640.jpg" alt="배너디자인02"></div>
-                            <p>Lorem ipsum dolor sit amet consectetur.</p>
-                        </li>
-                        <li class="banner banner03">
-                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="배너디자인03"></div>
-                            <p>Lorem ipsum dolor sit amet consectetur.</p>
-                        </li>
-                    </ul>
-                    <ul class="project-publish">
-                        <li class="detail detail01">
-                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지01"></div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        </li>
-                        <li class="detail detail02">
-                            <div class="img-box"><img src="./images/woman-1509956_640.jpg" alt="상세페이지02"></div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        </li>
-                        <li class="detail detail03">
-                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지03"></div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        </li>
-                        <li class="web web01">
-                            <div class="img-box"><img src="./images/woman-1509956_640.jpg" alt="웹디자인01"></div>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
-                        </li>
-                        <li class="web web02">
-                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="웹디자인02"></div>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </li>
-                        <li class="web web03">
-                            <div class="img-box"><img src="./images/woman-1509956_640.jpg" alt="웹디자인03"></div>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum!</p>
-                        </li>
-                        <li class="banner banner01">
-                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="배너디자인01"></div>
-                            <p>Lorem ipsum dolor sit amet consectetur.</p>
-                        </li>
-                        <li class="banner banner02">
-                            <div class="img-box"><img src="./images/woman-1509956_640.jpg" alt="배너디자인02"></div>
-                            <p>Lorem ipsum dolor sit amet consectetur.</p>
-                        </li>
-                        <li class="banner banner03">
-                            <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="배너디자인03"></div>
-                            <p>Lorem ipsum dolor sit amet consectetur.</p>
-                        </li>
-                    </ul>
                 </div>
+                <p>*클릭 시 확대</p>
+                <ul class="project-list">
+                    
+                    <li class="all detail det01">
+                        <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지01"></div>
+                        <div class="txt-box">
+                            <h5>00상세페이지</h5>
+                            <p>00회사 00제품을 ~~~~</p>
+                        </div>
+                    </li>
+                    <li class="all publish pub01">
+                        <div class="img-box"><img src="./images/polynesia-3021072_640.jpg" alt="퍼블리싱01"></div>
+                        <div class="txt-box">
+                            <h5>할리스 퍼블리싱</h5>
+                            <p>커피 브랜드 중 하나인 할리스를 반응형으로 퍼블리싱 해보았다.</p>
+                            <button><a href="#">기획서 및 와이어프레임 보러가기</a></button>
+                            <button><a href="#">웹사이트 보러가기</a></button>
+                        </div>
+                    </li>
+                    <li class="all web-design webd01">
+                        <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="웹디자인01"></div>
+                        <div class="txt-box">
+                            <h5>허먼밀러 웹디자인</h5>
+                            <p>가구회사 중 하나인 허먼밀러 웹사이트를 디자인해보았다.</p>
+                        </div>
+                    </li>
+                    <li class="all detail det02">
+                        <div class="img-box"><img src="./images/polynesia-3021072_640.jpg" alt="배너01"></div>
+                        <div class="txt-box">
+                            <h5>투쿨포스쿨 배너</h5>
+                            <p>투쿨포스쿨의 주력상품을 배너 광고로 디자인해보았다.</p>
+                        </div>
+                    </li>
+                    <li class="all detail det03">
+                        <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지02"></div>
+                        <div class="txt-box">
+                            <h5>00상세페이지</h5>
+                            <p>00회사 00제품을 ~~~~</p>
+                        </div>
+                    </li>
+                    <li class="all detail det04">
+                        <div class="img-box"><img src="./images/polynesia-3021072_640.jpg" alt="배너02"></div>
+                        <div class="txt-box">
+                            <h5>지그재그 배너</h5>
+                            <p>지그재그의 로고와 포인트 컬러를 이용해 배너광고로 디자인해보았다.</p>
+                        </div>
+                    </li>
+                    <li class="all web-design webd02">
+                        <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="웹디자인02"></div>
+                        <div class="txt-box">
+                            <h5>허먼밀러 웹디자인</h5>
+                            <p>가구회사 중 하나인 허먼밀러 웹사이트를 디자인해보았다.</p>
+                        </div>
+                    </li>
+                    <li class="all publish pub02">
+                        <div class="img-box"><img src="./images/polynesia-3021072_640.jpg" alt="퍼블리싱02"></div>
+                        <div class="txt-box">
+                            <h5>한솔제지</h5>
+                            <p>제지회사 중 하나인 한솔제지를 고정형으로 퍼블리싱 해보았다.</p>
+                            <button><a href="#">기획서 및 와이어프레임 보러가기</a></button>
+                            <button><a href="#">웹사이트 보러가기</a></button>
+                        </div>
+                    </li>
+                    <li class="all publish pub03">
+                        <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="퍼블리싱03"></div>
+                        <div class="txt-box">
+                            <h5>빽다방 퍼블리싱</h5>
+                            <p>커피 브랜드 중 하나인 빽다방을 반응형으로 퍼블리싱 해보았다.</p>
+                            <button><a href="#">기획서 및 와이어프레임 보러가기</a></button>
+                            <button><a href="#">웹사이트 보러가기</a></button>
+                        </div>
+                    </li>
+                    <li class="all detail det05">
+                        <div class="img-box"><img src="./images/polynesia-3021072_640.jpg" alt="배너03"></div>
+                        <div class="txt-box">
+                            <h5>지그재그 배너</h5>
+                            <p>지그재그의 로고와 포인트 컬러를 이용해 배너광고로 디자인해보았다.</p>
+                        </div>
+                    </li>
+                    <li class="all detail det06">
+                        <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지03"></div>
+                        <div class="txt-box">
+                            <h5>00상세페이지</h5>
+                            <p>00회사 00제품을 ~~~~</p>
+                        </div>
+                    </li>
+                    <li class="all web-design webd03">
+                        <div class="img-box"><img src="./images/polynesia-3021072_640.jpg" alt="웹디자인03"></div>
+                        <div class="txt-box">
+                            <h5>무신사</h5>
+                            <p>의류 쇼핑몰 중 하나인 무신사를 최근 유행하는 쇼핑몰 스타일로 디자인해보았다.</p>
+                        </div>
+                    </li>
+                    <li class="all publish pub04">
+                        <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="퍼블리싱04"></div>
+                        <div class="txt-box">
+                            <h5>메가박스 퍼블리싱</h5>
+                            <p>영화관 중 하나인 메가박스를 반응형으로 퍼블리싱 해보았다.</p>
+                            <button><a href="#">기획서 및 와이어프레임 보러가기</a></button>
+                            <button><a href="#">웹사이트 보러가기</a></button>
+                        </div>
+                    </li>
+                </ul>
+                
             </section>
             <section class="sec  section sec05" id="contact">
                 <div class="container">
@@ -803,17 +858,24 @@
         </footer>
     </section>    
     <script>
-     
-        // header 디자인 변경
+    // header event
+
+        // scroll에 따른 header 디자인 변경
         $(window).scroll(function(){ 
-            if($(window).width()<=960){
-                $('#main-nav').hide();
-            }
+            
             let scrTop = $(this).scrollTop();
             if(scrTop>=400){
-                $('.header').addClass('active');              
+                $('.header').addClass('active');
+                $('#main-nav').css({
+                    background:'var(--text01)',
+                    color:'var(--color00)'
+                })              
             }else{
-                $('.header').removeClass('active');               
+                $('.header').removeClass('active'); 
+                $('#main-nav').css({
+                    background:'var(--color00)',
+                    color:'var(--text01)',
+                })              
             }
         })
 
@@ -822,6 +884,7 @@
             if($('.header').hasClass('active')){
                 $('#main-nav').css({
                     background:'var(--text01)',
+                    color:'var(--color00)'
                 })
             }else{
                 $('#main-nav').css({
@@ -832,6 +895,7 @@
             $('#main-nav').slideToggle(300); 
 
         })
+        // window 너비에 따른 main-nav 보이기/가리기
         $(window).resize(function(){
             if($(this).width()>=961){
                 
@@ -840,23 +904,67 @@
                 $('#main-nav').hide();  
             }
         })
+
+        // skills 도달시 animation 실행
+        $(window).scroll(function(){
+            let skRtop = $(this).scrollTop();
+            let skPt = $('#skills').position().top
+            let winHe = $(window).height();
+            if(skRtop + winHe >= skPt){
+                $('#skills').addClass('active')
+            }
+        })
+
+// 포지션탑 1886.25
+//  윈도우높이 953
+// 스크롤탑 1839
+
+
+
+
+        // project nav 클릭 시 보여지는 리스트
+        $('.project-nav .01').click(function(){
+            $('.project-nav li').removeClass('active')
+            $('.project-nav .01').addClass('active')
+            $('.project-list .all').show()
+            
+        })
+        $('.project-nav .02').click(function(){
+            $('.project-nav li').removeClass('active')
+            $('.project-nav .02').addClass('active')
+            $('.project-list .all').hide()
+            $('.project-list .detail').show()
+        })
+        $('.project-nav .03').click(function(){
+            $('.project-nav li').removeClass('active')
+            $('.project-nav .03').addClass('active')
+            $('.project-list .all').hide()
+            $('.project-list .web-design').show()
+        })
+        $('.project-nav .04').click(function(){
+            $('.project-nav li').removeClass('active')
+            $('.project-nav .04').addClass('active')
+            $('.project-list .all').hide()
+            $('.project-list .publish').show()
+        })
+
+        // project-list의 각 img-box.click -> 이미지 팝업창 크게
+
         
-        // project sub-nav 클릭 이벤트
+       
+        // let txtBox = $('.project-list li .txt-box')
+
+        // $('.project-list li').mouseenter(function(){
+        //     txtBox.css({
+        //         display:'block'
+        //     })
+        // })
+        
 
 
         
-           
-
-        // skills bar 이동
-            // let moveBar = $('#skills ul li #move');
-            // if(scrTop>=1700){
-            //     moveBar.
-            // }
-
-
-        // let proDe = $('.project-nav .de');
-        // let proPu = $('.project-nav pu');
-        // let suB01 = $('.project-nav .sub-nav01') 
+      
+    
         
     </script>
 </body>
