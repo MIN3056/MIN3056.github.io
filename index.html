@@ -377,10 +377,11 @@
             display: flex;
             flex-flow: row wrap;
             padding-bottom: 100px;
-            position: relative;
+            
         }
         #project .project-list li{
             width: 33.333333%;
+            position: relative;
         }
         @media(max-width:768px){
             #project .project-list li{
@@ -400,11 +401,18 @@
                 width: 100%;
             }
         }
+        #project .project-list li img{
+            height: 303.91px;
+        }
         #project .project-list li .txt-box{
             display: none;
-            background: red;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;  
+            background: var(--color00);
         }
-        /* hover */
         #project .project-list li:hover .txt-box{
             display: block;
         }
@@ -413,7 +421,55 @@
             font-weight: 600;
             font-size: 1.3em;
         }
-
+       
+        .popup{
+            display:none;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+            left:0;
+            right:0;
+            top:0;
+            bottom: 0;
+            z-index:1000;
+            background: rgba(0, 0, 0, 0.2);
+            padding:50px 0;
+            color:var(--text05)
+        }
+        .popup-container{
+            display: flex;
+            flex-flow: row wrap;
+            width:960px;
+            height: 100vh;
+            margin:0 auto;            
+            padding:20px;
+            background:var(--text01);
+            justify-content: space-between;
+        }
+        .text{
+            margin-top: 1em;
+            font-size: 1.3em;
+        }
+        .text h3{
+            font-size: 1.5em;
+        }
+        .popup .img-box{
+            margin-top: 1em;
+            width: 100%;
+        }
+        
+        .btn-close{
+            width: 3.5em;
+            height: 2em;
+            border-radius: 15%;
+            border: none;
+            background: var(--color01);
+            color: var(--text01);
+            font-weight: 500;
+            font-size: 1em;
+            cursor: pointer;
+        }
 
         /* contact style */
         #contact{
@@ -535,6 +591,7 @@
         
         
     
+/*  */
     </style>
 </head>
 <body>
@@ -727,15 +784,30 @@
                     <li class="all detail det01">
                         <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지01"></div>
                         <div class="txt-box">
-                            <h5>00상세페이지</h5>
-                            <p>00회사 00제품을 ~~~~</p>
+                            
+                                <h5>00상세페이지</h5>
+                                <p>00회사 00제품을 ~~~~</p>
+                            
+                        </div>
+                        <div class="popup">
+                            <div class="popup-container">
+                                <div class="text">
+                                    <h3>팝업제목</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, nihil!</p>
+                                </div>
+                                <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지01"></div>
+                                <button class="btn-close">닫기</button>
+                            </div>
                         </div>
                     </li>
                     <li class="all publish pub01">
                         <div class="img-box"><img src="./images/polynesia-3021072_640.jpg" alt="퍼블리싱01"></div>
                         <div class="txt-box">
-                            <h5>할리스 퍼블리싱</h5>
-                            <p>커피 브랜드 중 하나인 할리스를 반응형으로 퍼블리싱 해보았다.</p>
+                            
+                                <h5>할리스 퍼블리싱</h5>
+                                <p>커피 브랜드 중 하나인 할리스를 반응형으로 퍼블리싱 해보았다.</p>
+                            
+                                
                             <button><a href="#">기획서 및 와이어프레임 보러가기</a></button>
                             <button><a href="#">웹사이트 보러가기</a></button>
                         </div>
@@ -743,15 +815,40 @@
                     <li class="all web-design webd01">
                         <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="웹디자인01"></div>
                         <div class="txt-box">
-                            <h5>허먼밀러 웹디자인</h5>
-                            <p>가구회사 중 하나인 허먼밀러 웹사이트를 디자인해보았다.</p>
+                            
+                                <h5>허먼밀러 웹디자인</h5>
+                                <p>가구회사 중 하나인 허먼밀러 웹사이트를 디자인해보았다.</p>
+                            
+                                </div>
+                        <div class="popup">
+                            <div class="popup-container">
+                                <div class="text">
+                                    <h3>팝업제목</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, nihil!</p>
+                                </div>
+                                <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지01"></div>
+                                <button class="btn-close">닫기</button>
+                            </div>
                         </div>
                     </li>
                     <li class="all detail det02">
                         <div class="img-box"><img src="./images/polynesia-3021072_640.jpg" alt="배너01"></div>
                         <div class="txt-box">
-                            <h5>투쿨포스쿨 배너</h5>
-                            <p>투쿨포스쿨의 주력상품을 배너 광고로 디자인해보았다.</p>
+                            
+                                <h5>투쿨포스쿨 배너</h5>
+                                <p>투쿨포스쿨의 주력상품을 배너 광고로 디자인해보았다.</p>
+                            
+                           
+                        </div>
+                        <div class="popup">
+                            <div class="popup-container">
+                                <div class="text">
+                                    <h3>팝업제목</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, nihil!</p>
+                                </div>
+                                <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지01"></div>
+                                <button class="btn-close">닫기</button>
+                            </div>
                         </div>
                     </li>
                     <li class="all detail det03">
@@ -760,6 +857,16 @@
                             <h5>00상세페이지</h5>
                             <p>00회사 00제품을 ~~~~</p>
                         </div>
+                        <div class="popup">
+                            <div class="popup-container">
+                                <div class="text">
+                                    <h3>팝업제목</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, nihil!</p>
+                                </div>
+                                <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지01"></div>
+                                <button class="btn-close">닫기</button>
+                            </div>
+                        </div>
                     </li>
                     <li class="all detail det04">
                         <div class="img-box"><img src="./images/polynesia-3021072_640.jpg" alt="배너02"></div>
@@ -767,12 +874,32 @@
                             <h5>지그재그 배너</h5>
                             <p>지그재그의 로고와 포인트 컬러를 이용해 배너광고로 디자인해보았다.</p>
                         </div>
+                        <div class="popup">
+                            <div class="popup-container">
+                                <div class="text">
+                                    <h3>팝업제목</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, nihil!</p>
+                                </div>
+                                <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지01"></div>
+                                <button class="btn-close">닫기</button>
+                            </div>
+                        </div>
                     </li>
                     <li class="all web-design webd02">
                         <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="웹디자인02"></div>
                         <div class="txt-box">
                             <h5>허먼밀러 웹디자인</h5>
                             <p>가구회사 중 하나인 허먼밀러 웹사이트를 디자인해보았다.</p>
+                        </div>
+                        <div class="popup">
+                            <div class="popup-container">
+                                <div class="text">
+                                    <h3>팝업제목</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, nihil!</p>
+                                </div>
+                                <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지01"></div>
+                                <button class="btn-close">닫기</button>
+                            </div>
                         </div>
                     </li>
                     <li class="all publish pub02">
@@ -799,6 +926,16 @@
                             <h5>지그재그 배너</h5>
                             <p>지그재그의 로고와 포인트 컬러를 이용해 배너광고로 디자인해보았다.</p>
                         </div>
+                        <div class="popup">
+                            <div class="popup-container">
+                                <div class="text">
+                                    <h3>팝업제목</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, nihil!</p>
+                                </div>
+                                <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지01"></div>
+                                <button class="btn-close">닫기</button>
+                            </div>
+                        </div>
                     </li>
                     <li class="all detail det06">
                         <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지03"></div>
@@ -806,12 +943,32 @@
                             <h5>00상세페이지</h5>
                             <p>00회사 00제품을 ~~~~</p>
                         </div>
+                        <div class="popup">
+                            <div class="popup-container">
+                                <div class="text">
+                                    <h3>팝업제목</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, nihil!</p>
+                                </div>
+                                <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지01"></div>
+                                <button class="btn-close">닫기</button>
+                            </div>
+                        </div>
                     </li>
                     <li class="all web-design webd03">
                         <div class="img-box"><img src="./images/polynesia-3021072_640.jpg" alt="웹디자인03"></div>
                         <div class="txt-box">
                             <h5>무신사</h5>
                             <p>의류 쇼핑몰 중 하나인 무신사를 최근 유행하는 쇼핑몰 스타일로 디자인해보았다.</p>
+                        </div>
+                        <div class="popup">
+                            <div class="popup-container">
+                                <div class="text">
+                                    <h3>팝업제목</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, nihil!</p>
+                                </div>
+                                <div class="img-box"><img src="./images/flowers-276014_640.jpg" alt="상세페이지01"></div>
+                                <button class="btn-close">닫기</button>
+                            </div>
                         </div>
                     </li>
                     <li class="all publish pub04">
@@ -947,25 +1104,45 @@
             $('.project-list .all').hide()
             $('.project-list .publish').show()
         })
+        // project-list imb-box mouseenter -> txtbox 보이기
+        // $('.project-list li').mouseenter(function(){
+        //     $('.txt-box').hide();
+        //     $('.project-list li .txt-box').show();
+        // })
+        // $('.project-list li').mouseleave(function(){
+        //     $('.txt-box').hide();
+        // })
+
 
         // project-list의 각 img-box.click -> 이미지 팝업창 크게
+    //         $('.project-list li').click(function(){
+    //             $(this).children('.popup').show();
+    //         })
+    //         $('.btn-close').click(function(){
+    //             $('.popup').hide();
+    //         })
+    //
+// 문제사항
 
-        
-       
-        // let txtBox = $('.project-list li .txt-box')
+// 2.클릭시 팝업창 열리는데, 닫기가 안먹힘
 
-        // $('.project-list li').mouseenter(function(){
-        //     txtBox.css({
-        //         display:'block'
-        //     })
+        $('.project-list li').click(function(){
+                $(this).children('.popup').show();
+                
+            })
+            // $('.btn-close').click(function(){
+            //     $('.popup').hide();
+            // })
+
+        const popUp = document.querySelector('.popup')
+        const btnClose = document.querySelector('.btn-close')
+        // proLi.onclick(()=>{
+        //     popUp.style.display="flex"
         // })
-        
-
-
-        
-      
-    
-        
+     
+        btnClose.addEventListener("click", function(){
+            popUp.style.display="none"
+        })
     </script>
 </body>
 </html>
