@@ -116,7 +116,7 @@
         @media (max-width: 980px){
             .header .container #main-nav{
                 display:none;
-                padding:20px;
+                margin:20px;
                 position: absolute;
                 left:0;
                 right: 0;
@@ -135,7 +135,7 @@
             }              
                     
         }
-    
+        /* 버튼네비가 멈칫하면서 내려옴 */
        /* aside to-top style */
        .to-top{
         position: fixed;
@@ -265,9 +265,6 @@
             animation: pbar90 2s forwards;
         }
 
-       /* #skills.active .bar::after{
-        animation: pbar70 3s 0s linear forwards;
-        }*/
          #skills.active li:nth-child(2) .bar::after{
             animation-delay:0.5s;
         }
@@ -340,12 +337,9 @@
         }
         
 
-        @media(max-width:1132px){
-            #skills .list01 {
-                grid-area: 1 / 1 / 2 / -1;
-            }
-            #skills .list02 {
-                grid-area: 2 / 1 / 2 / -1;
+        @media(max-width:1100px){
+            #skills .sk-half{
+                grid-template-columns: 1fr;
             }
     
         }
@@ -376,8 +370,7 @@
             max-width: 100%;
             display: flex;
             flex-flow: row wrap;
-            padding-bottom: 100px;
-            
+            padding-bottom: 100px;   
         }
         #project .project-list li{
             width: 33.333333%;
@@ -446,6 +439,7 @@
             padding:20px;
             background:var(--text01);
             justify-content: space-between;
+            position: relative;
         }
         .text{
             margin-top: 1em;
@@ -469,8 +463,31 @@
             font-weight: 500;
             font-size: 1em;
             cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 20px; 
         }
-
+        @media(max-width:1200px){
+            .popup-container{
+                width: 780px;
+            }
+        }
+        @media(max-width:1000px){
+            .popup-container{
+                width: 580px;
+            }
+        }
+        @media(max-width:680px){
+            .popup-container{
+                width: 480px;
+            }
+        }
+        @media(max-width:500px){
+            .popup-container{
+                width: 340px;
+            }
+        }
+       
         /* contact style */
         #contact{
             background: var(--color04);
@@ -1104,45 +1121,20 @@
             $('.project-list .all').hide()
             $('.project-list .publish').show()
         })
-        // project-list imb-box mouseenter -> txtbox 보이기
-        // $('.project-list li').mouseenter(function(){
-        //     $('.txt-box').hide();
-        //     $('.project-list li .txt-box').show();
-        // })
-        // $('.project-list li').mouseleave(function(){
-        //     $('.txt-box').hide();
-        // })
+        
 
 
         // project-list의 각 img-box.click -> 이미지 팝업창 크게
-    //         $('.project-list li').click(function(){
-    //             $(this).children('.popup').show();
-    //         })
-    //         $('.btn-close').click(function(){
-    //             $('.popup').hide();
-    //         })
-    //
-// 문제사항
 
-// 2.클릭시 팝업창 열리는데, 닫기가 안먹힘
 
-        $('.project-list li').click(function(){
-                $(this).children('.popup').show();
-                
-            })
-            // $('.btn-close').click(function(){
-            //     $('.popup').hide();
-            // })
-
-        const popUp = document.querySelector('.popup')
-        const btnClose = document.querySelector('.btn-close')
-        // proLi.onclick(()=>{
-        //     popUp.style.display="flex"
-        // })
-     
-        btnClose.addEventListener("click", function(){
-            popUp.style.display="none"
+        $('.project-list .txt-box').click(function(){
+            $(this).next('.popup').show();            
         })
+        $('.btn-close').click(function(){
+            $('.popup').hide();
+        })
+
+
     </script>
 </body>
 </html>
