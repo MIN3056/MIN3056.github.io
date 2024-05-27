@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko">    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -116,7 +116,7 @@
         @media (max-width: 980px){
             .header .container #main-nav{
                 display:none;
-                margin:20px;
+                /* margin:20px; */
                 position: absolute;
                 left:0;
                 right: 0;
@@ -376,12 +376,17 @@
             width: 33.333333%;
             position: relative;
         }
-        @media(max-width:768px){
+        @media(max-width:960px){
             #project .project-list li{
                 width: 50%;
             }
             #project .project-nav{
                 font-size: 1.5em;
+            }
+        }
+        @media(max-width:700px){
+            #project .project-list li{
+                width: 100%;
             }
         }
         @media(max-width:600px){
@@ -495,7 +500,7 @@
             text-align: center;
         }
         #contact .container{
-            height: 100vh;
+            height: auto;
         }
         #contact ul{
             display: flex;
@@ -510,6 +515,7 @@
         #contact li h3{
             font-size: 2em;
         }
+        
 
         @media(max-width:1200px){
             #contact li h3{
@@ -551,13 +557,12 @@
             #about .about-me{
                 grid-template-columns: 1fr;
             }
-            #contact li{
-               width:100%
-            }  
-            #contact li img{
-                width: 100px;
-                height: 100px;
+            #contact ul{
+                flex-flow: row wrap;
             }
+            #contact li{
+               width:30%
+            }  
         }
         @media(max-width:720px){
             #contact ul{
@@ -577,9 +582,6 @@
             #home p{
                 font-size: 13px;
             }
-            #skills ul li h3{
-                font-size: 1.8em;
-            }
 
         }
         @media(max-width:450px){
@@ -589,10 +591,19 @@
             #home p{
                 font-size: 11px;
             }
+            #contact li{
+                width: 50%;
+            }
         }
         @media(max-width:403px){
+            .header h1{
+                font-size: 1em;
+            }
             #home p{
                 font-size: 9px;
+            }
+            #skills ul li h3{
+                font-size: 1.2em;
             }
             #skills ul li p{
                 font-size: 13px;
@@ -1009,7 +1020,7 @@
                     <ul>
                         <li>
                                 <div class="img-box"><a href="#"><img src="./images/ico-talk.svg" alt="Kakaotalk"></a></div>
-                                <h3><a href="#">Kakaotalk</a></h3>
+                                <h3><a href="https://open.kakao.com/o/sQu4WVtg">Kakaotalk</a></h3>
                         </li>
                         <li>
                                 <div class="img-box"><a href="#"><img src="./images/ico-mail.svg" alt="mail"></a></div>
@@ -1017,7 +1028,7 @@
                         </li>
                         <li>
                                 <div class="img-box"><a href="#"><img src="./images/ico-github.svg" alt="github"></a></div>
-                                <h3><a href="#">github</a></h3>
+                                <h3><a href="https://github.com/MIN3056">github</a></h3>
                         </li>
                         <li>
                                 <div class="img-box"><a href="#"><img src="./images/ico-instagram.svg" alt="instagram"></a></div>
