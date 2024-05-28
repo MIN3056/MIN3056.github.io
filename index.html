@@ -648,14 +648,33 @@
             align-items: center;
             text-align: center;
         }
+        .wave-container{
+            position: absolute;
+            left:0;
+            right:0;
+            bottom:0;
+        }
+        .wave-container::after{
+            content:'';
+            display: block;
+            height:200px;
+            background:#006cf6;
+        }
         .waves {
             position:relative;
             width: 100%;
-            height:35vh;
+            /* height:35vh; */
             margin-bottom:-7px; /*Fix for safari gap*/
             min-height:100px;
             max-height:150px;
         }
+
+        /* wave 높이 조절 : wave위치 먼저 intro에 맞춰 조정해야하므로,
+        wave의 부모요소에 class=wave-container 지정 후 position으로 위치 조정.
+        wave-container 전체에 색을 부여할 수 없으므로,
+        wave-container의 가상요소를 이용해서 색을 부여한다. */
+
+        
         /* Animation */
 
         .parallax > use {
@@ -695,7 +714,7 @@
         <div class="inner-header flex">
             <h1>SOOMIN LEE Portfolio</h1>
         </div>
-        <div>
+        <div class="wave-container">
             <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
                 <defs>
                     <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
